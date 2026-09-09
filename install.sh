@@ -284,7 +284,7 @@ if ensure_dir "$HOME/.claude/skills"; then
 fi
 
 migrate_file "$REPO/herdr/config.toml" "$HOME/.config/herdr/config.toml"
-migrate_file "$REPO/herdr/scripts/usagebar-toggle.sh" "$HOME/.config/herdr/scripts/usagebar-toggle.sh"
+migrate_file "$REPO/herdr/scripts/sidebar-toggle.sh" "$HOME/.config/herdr/scripts/sidebar-toggle.sh"
 migrate_file "$REPO/herdr/scripts/usagebar-sync-fork.sh" "$HOME/.config/herdr/scripts/usagebar-sync-fork.sh"
 migrate_file "$REPO/herdr/plugins/usagebar.config.toml" "$HOME/.config/herdr/plugins/config/usagebar/config.toml"
 

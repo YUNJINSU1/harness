@@ -10,7 +10,7 @@ delivery = "system"
 [experimental]
 pane_history = true
 
-# --- Agent Usage (usagebar) plugin ---
+# --- Sidebar: Sheep pasture (top) + Agent Usage (bottom) ---
 
 # $provider is the billing provider (claude / codex / …), $limit the shortest
 # remaining window, $context the pane's context occupancy.
@@ -22,8 +22,10 @@ rows = [
   ["$context"],
 ]
 
-# Single-instance toggle for the Agent Usage pane (right split, 64 columns).
-# Not usagebar.open-limits: that action only opens, always at ratio 0.5.
+# Single-instance toggle for the whole sidebar: one right-hand column, 64
+# columns wide, pasture on top and the limits panel filling the rest.
+# Not usagebar.open-limits or huketo.sheep.toggle-side: each opens only its own
+# pane, always at ratio 0.5, so neither can place the pair.
 #
 # Two bindings on purpose. Windows Terminal has no Kitty keyboard protocol, so
 # ctrl+shift+<letter> arrives as plain ctrl+<letter> and herdr never sees the
@@ -32,28 +34,25 @@ rows = [
 [[keys.command]]
 key = "prefix+u"
 type = "shell"
-command = "bash \"$HOME/.config/herdr/scripts/usagebar-toggle.sh\""
-description = "Agent Usage: toggle limits pane"
+command = "bash \"$HOME/.config/herdr/scripts/sidebar-toggle.sh\""
+description = "Sidebar: toggle pasture + usage"
 
 [[keys.command]]
 key = "f9"
 type = "shell"
-command = "bash \"$HOME/.config/herdr/scripts/usagebar-toggle.sh\""
-description = "Agent Usage: toggle limits pane"
+command = "bash \"$HOME/.config/herdr/scripts/sidebar-toggle.sh\""
+description = "Sidebar: toggle pasture + usage"
 
-# --- Herdr Sheep (huketo.sheep) plugin ---
+# --- Herdr Sheep (huketo.sheep) overlay ---
 #
-# Two ways in, because they want different things:
-#
-#   open-here    an overlay over the pane you pressed the key in. Herdr restores
-#                the previous layout and focus when the pasture closes, so this
-#                is the "look at the whole flock for a second" key.
-#   toggle-side  a right-hand split that stays. Pressing it again closes the one
-#                that is open, wherever it is, so there is never a second one.
+# open-here is an overlay over the pane you pressed the key in. Herdr restores
+# the previous layout and focus when the pasture closes, so this is the "look
+# at the whole flock for a second" key — distinct from the sidebar above,
+# which stays put.
 #
 # `y` for 양. prefix+s is herdr's settings and prefix+p is previous_tab, so
 # neither is available; f10 is the single-press form of prefix+y, the same pair
-# usagebar uses above (prefix+u / f9).
+# the sidebar uses above (prefix+u / f9).
 [[keys.command]]
 key = "prefix+y"
 type = "plugin_action"
@@ -68,9 +67,9 @@ description = "Sheep: pasture over this pane"
 
 [[keys.command]]
 key = "prefix+shift+y"
-type = "plugin_action"
-command = "huketo.sheep.toggle-side"
-description = "Sheep: toggle pasture side pane"
+type = "shell"
+command = "bash \"$HOME/.config/herdr/scripts/sidebar-toggle.sh\""
+description = "Sidebar: toggle pasture + usage"
 
 [theme]
 name = "tokyo-night"
