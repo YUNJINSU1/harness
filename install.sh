@@ -99,6 +99,69 @@ link_skill() {
   fi
 }
 
+# An orphaned link is dangling by definition, so `readlink -f` cannot resolve
+# it and the raw link text cannot be compared either: this script writes
+# absolute links, but the `skills` CLI writes relative ones into the same
+# directories. Resolve the text against the link's own directory and normalize
+# it without requiring the destination to exist, so both forms compare equal
+# when they name the same path.
+link_destination() {
+  local text
+  text="$(readlink -- "$1")"
+  [[ "$text" == /* ]] || text="$(dirname -- "$1")/$text"
+  realpath -m -- "$text"
+}
+
+# Removing an upstream skill leaves its installed links dangling because the
+# link loops only discover names that still exist in the source tree.
+#
+# Ownership cannot be read off the link's shape. `$HOME/.claude/skills/<name>`
+# points at `$HOME/.agents/skills/<name>` whether this repo wrote it or a
+# hand-installed skill did, so matching that shape would delete skills this
+# repo never owned. What separates them is whether the link still leads
+# anywhere: a repo-owned name loses its source when the skill leaves the repo,
+# while a hand-installed one keeps its own entry in the shared tree. So the
+# link is reaped only when it matches the link this repo writes *and* that
+# link's target is gone. Reaping the hub before the per-agent directory makes
+# the second pass see the hub entry this pass just removed.
+#
+# These directories are shared, so an unmanaged entry is the normal case, not
+# a conflict. The one entry worth a warning is a symlink resolving into this
+# repo that is still not the link this repo manages: the name is contested and
+# guessing a winner would delete work.
+reap_orphaned_skill_links() {
+  local dest="$1"
+  local source_root="$2"
+  local name target
+
+  shopt -s nullglob
+  for target in "$dest"/*; do
+    name="$(basename "$target")"
+    if [[ -f "$REPO/skills/$name/SKILL.md" ]]; then
+      continue
+    fi
+    if [[ -e "$source_root/$name" || -L "$source_root/$name" ]]; then
+      continue
+    fi
+
+    if [[ -L "$target" ]] && [[ "$(link_destination "$target")" == "$(realpath -m -- "$source_root/$name")" ]]; then
+      if $DRY_RUN; then
+        echo "would remove orphaned skill link: $target"
+      else
+        rm -- "$target"
+        echo "removed orphaned skill link: $target"
+      fi
+      continue
+    fi
+
+    if [[ -L "$target" ]] && points_into_repo "$target"; then
+      echo "skipped orphaned skill: $target points into this repo but is not the link it manages" >&2
+      conflicts+=("$target")
+    fi
+  done
+  shopt -u nullglob
+}
+
 link_dir() {
   local src="$1"
   local target="$2"
@@ -302,6 +365,9 @@ if ensure_dir "$HOME/.claude/skills"; then
   done
   shopt -u nullglob
 fi
+
+reap_orphaned_skill_links "$SKILLS_DEST" "$REPO/skills"
+reap_orphaned_skill_links "$HOME/.claude/skills" "$SKILLS_DEST"
 
 migrate_file "$REPO/herdr/config.toml" "$HOME/.config/herdr/config.toml"
 migrate_file "$REPO/herdr/scripts/sidebar-toggle.sh" "$HOME/.config/herdr/scripts/sidebar-toggle.sh"
