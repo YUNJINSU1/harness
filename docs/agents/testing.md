@@ -12,10 +12,12 @@ Bun tests import `bun:test` and live beside the mechanism they exercise. Pass th
 bun test omp/extensions/profiles/profiles.test.ts
 bun test omp/extensions/herdr/herdr.test.ts
 bun test herdr/scripts/harness-run.test.ts
+bun test herdr/scripts/sidebar-toggle.test.ts
 bun test herdr/cron/host-sync.test.mjs
+bun test herdr/cron/skill-audit.test.mjs
 ```
 
-The host-sync test uses temporary local Git repositories and is the focused boundary for `herdr/cron/host-sync.mjs`. Some extension tests resolve packages or authentication storage from an installed OMP CLI; inspect their setup before running and report that prerequisite instead of silently substituting Bun's package cache.
+The host-sync test uses temporary local Git repositories and is the focused boundary for `herdr/cron/host-sync.mjs`. The sidebar-toggle test drives the shell script with a recorded fake `herdr` injected through `HERDR_BIN_PATH` and a private `TMPDIR`, so it never reaches a running server, a real pane, or the shared lock; it is the focused boundary for `herdr/scripts/sidebar-toggle.sh`. The skill-audit test builds a temporary skill tree and transcript fixtures and never reads the real `$HOME`. Some extension tests resolve packages or authentication storage from an installed OMP CLI; inspect their setup before running and report that prerequisite instead of silently substituting Bun's package cache.
 
 Use the aggregate Bun boundary only when a change crosses those components:
 
@@ -48,7 +50,7 @@ bash -n install.sh
 bash -n omp/config.apply.sh
 ```
 
-Use `shellcheck` only when it is available; it is not a repository-installed mandatory tool. Parser or static-analysis success does not prove link ownership, backup behavior, installed tool versions, or live configuration.
+Use `shellcheck` only when it is available; it is not a repository-installed mandatory tool. Parser or static-analysis success does not prove link ownership, backup behavior, installed tool versions, or live configuration. `sidebar-toggle.sh` has a Bun contract test (above); prefer it over eyeballing the script.
 
 ## Host-aware inspections
 
@@ -59,7 +61,9 @@ bash install.sh --dry-run
 bash omp/config.apply.sh --check
 ```
 
-`install.sh --dry-run` reports planned links, backups, conflicts, and exact-owned retired-link cleanup without applying them. `config.apply.sh --check` reports managed OMP drift and exits nonzero when differences exist. Neither replaces a focused unit or integration test of changed source.
+`install.sh --dry-run` reports planned links, backups, conflicts, exact-owned retired-link cleanup, and orphaned skill links it would reap, without applying them. Reaping runs per directory, so a dry run lists only the hub link of a removed skill; the dependent `~/.claude/skills` link is reported once the hub link is actually gone. `config.apply.sh --check` reports managed OMP drift and exits nonzero when differences exist. Neither replaces a focused unit or integration test of changed source.
+
+`bun herdr/cron/skill-audit.mjs` is read-only: it lists every installed skill — skills directory and user-scope plugins alike — with call and mention counts scanned out of local transcripts, flagging the ones whose always-loaded description earns nothing. Installation age comes from directory mtime, so a fresh checkout or reinstall marks managed skills `new`; treat that column as "too recent to judge", not as first use.
 
 The mutating forms of installation and configuration commands are governed by [`authority.md`](authority.md) and are not routine verification.
 
