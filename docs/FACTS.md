@@ -1,10 +1,10 @@
 # 하네스 통합 레포의 확인된 사실
 
-이 문서는 공개 가능한 기술 관측과 그 한계를 기록합니다. 현재 유지하는 환경은 Linux/WSL2, OMP 18.1.13/18.1.14, Bun 1.3.14입니다. 날짜가 있는 관측은 다른 버전이나 호스트의 성능 보장이 아닙니다.
+이 문서는 공개 가능한 기술 관측과 그 한계를 기록합니다. 현재 유지하는 환경은 Linux/WSL2, OMP 18.1.13~18.1.15, Bun 1.3.14입니다. 날짜가 있는 관측은 다른 버전이나 호스트의 성능 보장이 아닙니다.
 
 ## 1. 도구 가용성
 
-- 설치기와 런타임 패치는 `@oh-my-pi/pi-coding-agent` 18.1.13 또는 18.1.14를 요구합니다. 다른 버전이나 예상과 다른 source layout은 거부합니다.
+- 설치기와 런타임 패치는 `@oh-my-pi/pi-coding-agent` 18.1.13~18.1.15를 요구합니다. 다른 버전이나 예상과 다른 source layout은 거부합니다.
 - Bun 1.3.14가 설치기, TypeScript extension, `omp-profile`, `harness-run`, cost audit, host-sync의 기준 환경입니다.
 - Python 3 표준 라이브러리의 `sqlite3`와 `json`은 benchmark와 collector에 사용됩니다. `sqlite3`나 `jq` CLI가 모든 Herdr/cron 환경에 있다고 가정하지 않습니다.
 - 네이티브 Windows와 macOS는 설치 대상으로 확인하지 않았습니다. WSL에서 Windows Chrome을 연결하는 기능은 전체 Windows 설치 지원과 별개입니다.

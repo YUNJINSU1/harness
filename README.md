@@ -15,14 +15,14 @@ Harness connects an existing [Oh My Pi](https://github.com/can1357/oh-my-pi) (OM
 | Shared skills | Repository-owned instructions linked into OMP, Claude Code, and AGY, with retained notices for adopted material. |
 | Model profiles | Purpose-based model and effort selection through `/profile` and `omp-profile`; `/effort` can remain local to one session. |
 | OAuth account selection | `/account` chooses among OMP's existing accounts, with optional shared selection. Tokens are not copied into this repository. |
-| Context compaction | OMP built-in compaction by default, portable migration of legacy native state, and an OMP 18.1.13/18.1.14 compatibility patch. |
+| Context compaction | OMP built-in compaction by default, portable migration of legacy native state, and an OMP 18.1.13-18.1.15 compatibility patch. |
 | Visible execution | `harness-run` launches and revisits commands or independent agents in Herdr without moving existing task subagents. |
 | Task-based evaluation | Replayable fixtures, protected grading material, cost accounting, and routing proposals—not a universal model leaderboard. |
 | Personal operations | Cost audits, guarded host synchronization, and a human-reviewed daily-report drafting workflow. These are not hosted services. |
 
 ## Recommended environment
 
-The maintained showcase target is **Linux or WSL2 with Bash, GNU-compatible utilities, OMP 18.1.13 or 18.1.14, and Bun 1.3.14**. Python 3 is needed for configuration inspection and benchmarks. An existing `~/.claude/CLAUDE.md` is required by the current installer. Install and authenticate the underlying tools separately. Native Windows, macOS, other OMP releases, and other Bun releases are not maintained compatibility targets.
+The maintained showcase target is **Linux or WSL2 with Bash, GNU-compatible utilities, OMP 18.1.13, 18.1.14, or 18.1.15, and Bun 1.3.14**. Python 3 is needed for configuration inspection and benchmarks. An existing `~/.claude/CLAUDE.md` is required by the current installer. Install and authenticate the underlying tools separately. Native Windows, macOS, other OMP releases, and other Bun releases are not maintained compatibility targets.
 
 ```bash
 git clone https://github.com/huketo/harness.git

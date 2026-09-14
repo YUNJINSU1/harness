@@ -9,7 +9,7 @@ Harness configures an existing coding-agent workstation. It does not install OMP
 | Component | Maintained showcase target |
 | --- | --- |
 | Operating environment | Linux or WSL2 with Bash 4+ and GNU-compatible utilities (`readlink -f`, `cmp`, `cp`, `ln`). Native Windows and macOS installation are not maintained targets. |
-| OMP | `@oh-my-pi/pi-coding-agent` **18.1.13 or 18.1.14**, available as `omp` on `PATH`. The runtime patch rejects other versions or unexpected source layouts. |
+| OMP | `@oh-my-pi/pi-coding-agent` **18.1.13, 18.1.14, or 18.1.15**, available as `omp` on `PATH`. The runtime patch rejects other versions or unexpected source layouts. |
 | Bun | **1.3.14**. The installer, extensions, and helper CLIs use Bun; other releases are not maintained compatibility targets. |
 | Python 3 | Required for `omp/config.apply.sh`, benchmarks, and selected skill collectors. |
 | Existing personal instructions | `~/.claude/CLAUDE.md` must already be a file you maintain. The installer links it into AGY's global rules. The repository's `CLAUDE.md` is a separate owner-maintenance adapter. |

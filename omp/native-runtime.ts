@@ -214,7 +214,7 @@ if (import.meta.main) {
 	);
 	if (
 		pkg.name !== "@oh-my-pi/pi-coding-agent" ||
-		!["18.1.13", "18.1.14"].includes(pkg.version)
+		!["18.1.13", "18.1.14", "18.1.15"].includes(pkg.version)
 	)
 		throw new Error(`네이티브 호환 검증이 필요한 OMP 버전: ${pkg.version}`);
 	const files = [

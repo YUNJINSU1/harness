@@ -38,11 +38,19 @@ The root MIT license and no-contributions policy are settled repository policy, 
 
 ## Host and external boundaries
 
-`bash install.sh` changes links and applies an OMP 18.1.13/18.1.14 runtime patch; `--with-config` additionally applies managed OMP settings. `omp/config.apply.sh` without `--check` changes live configuration. Run mutating forms only under explicit host-change authority. The documented `--dry-run` and `--check` forms inspect machine state and therefore still require the task to permit host inspection.
+`bash install.sh` changes links and applies an OMP 18.1.13-18.1.15 runtime patch; `--with-config` additionally applies managed OMP settings. `omp/config.apply.sh` without `--check` changes live configuration. Run mutating forms only under explicit host-change authority. The documented `--dry-run` and `--check` forms inspect machine state and therefore still require the task to permit host inspection.
 
 Benchmark runs can invoke paid providers. Daily-report collectors can authenticate to GitLab and read private calendar feeds; the final Daou Office entry and submission are human UI actions. Cron commands can alter unattended behavior. Treat each boundary according to its effects rather than inferring safety from a command name or dry run.
 
 The distributed cron snapshot is empty and grants no scheduling authority. Example configuration snapshots do not authorize copying host configuration into the repository or restoring the example onto a host.
+
+## Delegated work and the owner's visible surface
+
+A subagent inherits the task's authority, not a wider one, and its side effects land on the owner's screen rather than in a transcript the owner can ignore. `xd://herdr_run` and `xd://herdr_agent` create retained Herdr tabs by design: they are for long runs, live human observation, and collaboration. A subagent must not use them, and a single command that returns a fact never justifies one. When a subagent lacks a shell, it asks the parent for the fact instead of finding a surface that grants one.
+
+Choose the agent by the authority the slice needs. Read-only research goes to `scout`, which has no shell on purpose; work that must run commands goes to an agent that already has one. Granting a read-only agent a shell to unblock one lookup trades a standing guarantee for a single answer.
+
+Whoever creates a visible artifact removes it: task-created tabs, panes, processes, and worktrees are cleaned up in the same task that made them.
 
 ## Evidence does not expand authority
 

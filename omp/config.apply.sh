@@ -34,7 +34,7 @@ fi
 # arrays, objects, booleans, and numbers are passed as JSON.
 readarray -t SETTINGS <<'EOF'
 modelRoles|{}
-symbolPreset|"unicode"
+symbolPreset|"nerd"
 theme.dark|"titanium"
 setupVersion|2
 dev.autoqaConsent|"granted"

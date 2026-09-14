@@ -16,7 +16,7 @@ CLI·판단 정책 정본은 [herdr-hitl](https://github.com/huketo/herdr-hitl)�
 
 ## 계정·모델·보이는 실행
 
-`bash install.sh`는 OMP 확장 네 개(accounts, profiles, herdr, native-compaction)와 `omp-profile`, `harness-run` 명령을 연결하고, 계정 선택·복구 가능한 shake·기존 native 상태 이전을 위한 OMP 18.1.13/18.1.14 런타임 호환 패치를 설치합니다. 인증 저장소를 복제하지 않습니다. 설치 후 OMP를 재시작합니다.
+`bash install.sh`는 OMP 확장 네 개(accounts, profiles, herdr, native-compaction)와 `omp-profile`, `harness-run` 명령을 연결하고, 계정 선택·복구 가능한 shake·기존 native 상태 이전을 위한 OMP 18.1.13~18.1.15 런타임 호환 패치를 설치합니다. 인증 저장소를 복제하지 않습니다. 설치 후 OMP를 재시작합니다.
 
 ### 계정 선택
 
