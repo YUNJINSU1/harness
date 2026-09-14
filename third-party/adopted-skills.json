@@ -9,6 +9,151 @@
   },
   "snapshot_hash_recipe": "SHA-256 over files sorted by relative POSIX path: UTF-8 path + NUL + file bytes + NUL; based on archived installed tree before adoption edits and license additions.",
   "skills": {
+    "awesome-slides": {
+      "adopted_on": "2026-09-10",
+      "source": "Original workflow with attributed implementation, template, and design-recipe adaptations from pinned upstream sources",
+      "ownership": "harness-owned; excluded from skills CLI updates",
+      "license": "MIT for original skill and fixtures; source-specific MIT and Apache-2.0 terms retained with adapted assets",
+      "license_path": "skills/awesome-slides/LICENSE",
+      "previous_registration": null,
+      "upstreams": [
+        {
+          "source": "https://github.com/zarazhangrui/frontend-slides",
+          "commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+          "license": "MIT",
+          "use": "Adapted native-engine palette tokens and composition recipes; exact map and MIT notice in assets/styles/ATTRIBUTION.md. Generic HTML starter superseded by complete theme-specific source templates."
+        },
+        {
+          "source": "https://github.com/vstorm-co/content-skills",
+          "commit": "5138a11b1e3407ea3352d4010cbe33233bdeb01c",
+          "license": "MIT",
+          "use": "Adapted Slidev pitch-deck sequence and timed notes, Reveal native sections/plugins/configuration and brand mapping; MIT notices in both engine asset directories"
+        },
+        {
+          "source": "https://github.com/AlemTuzlak/skills",
+          "commit": "4b16f3e052635c873d4eede00e8dc5f471f5fc3a",
+          "license": "MIT declared in README and plugin metadata; root license text not found in the reviewed snapshot",
+          "use": "Research only: official Slidev skill dependency and concrete syntax recipes, assertion/evidence and rendered-state verification; no source copied"
+        },
+        {
+          "source": "https://github.com/zarazhangrui/beautiful-html-templates",
+          "commit": "e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+          "license": "MIT, Copyright 2026 Zara Zhang",
+          "license_path": "skills/awesome-slides/assets/template-library/LICENSE",
+          "paths": ["templates", "runtime", "index.json", "LICENSE"],
+          "use": "Direct unmodified copy of all 34 complete HTML themes, design guides, metadata and runtime. Generator clones the chosen theme and supplies missing shared deck-stage.js. ORIGIN.json records scope; screenshot gallery remains pinned upstream. Demo content and online fonts require task-specific adaptation."
+        },
+        {
+          "source": "https://github.com/BaizeAI/talks",
+          "commit": "5ce7e28b8763d6adb82ee7b0b2dcdb58afad7c99",
+          "license": "Apache-2.0",
+          "use": "Adapted TtftBreakdown, StageFlow and CaseStory into typed AsBreakdown, AsStageFlow and AsCaseStory Vue components; modification notices, source map and Apache-2.0 license in assets/slidev; no domain measurements, media or trademarks reused"
+        },
+        {
+          "source": "https://github.com/slidevjs/slidev",
+          "commit": "a8d8ff717c5a72c1b3a9d98f1c849481f2ddcd00",
+          "license": "MIT",
+          "license_path": "skills/awesome-slides/references/slidev-official/LICENSE.txt",
+          "paths": ["skills/slidev/SKILL.md", "skills/slidev/references/", "LICENSE"],
+          "use": "Official Slidev agent reference set bundled unmodified under references/slidev-official/ so the skill routes to pinned syntax documentation without installing a second top-level skill. SKILL.md renamed to INDEX.md with its frontmatter removed; README.md excluded. Provenance in references/slidev-official/ORIGIN.json."
+        }
+      ],
+      "local_changes": [
+        "Author original presentation and reading workflows joining evidence, narrative, visual direction, notes, and actual output verification.",
+        "Preserve existing engines; default unconstrained new decks to a complete HTML theme, port its visual system when native Slidev/Reveal source is required, and distinguish native-editable from image-based PPTX.",
+        "Add Korean/CJK, truthful data provenance, offline, static-media, privacy, and meaning-preserving revision guidance.",
+        "Add five original synthetic evaluation cases without real organizational data.",
+        "Bundle a theme-specific HTML library, native Slidev/Reveal engine mechanisms and technical components, an exclusive-destination template copier, and a verified officecli native-editable recipe.",
+        "Bundle the pinned official Slidev agent reference set inside the skill and route to it, instead of depending on a separately installed slidev skill."
+      ],
+      "excluded_sources": []
+    },
+    "awesome-interface": {
+      "adopted_on": "2026-09-09",
+      "source": "jakubkrehel/skills + jakubkrehel/make-interfaces-feel-better",
+      "ownership": "harness-owned; excluded from skills CLI updates",
+      "license": "MIT",
+      "previous_registration": null,
+      "snapshot_hash_recipe": "SHA-256 over selected source files sorted by relative POSIX path: UTF-8 path + NUL + file bytes + NUL. Directory paths expand recursively. Hashes describe upstream inputs, not the adapted output.",
+      "upstreams": [
+        {
+          "source": "https://github.com/jakubkrehel/skills",
+          "commit": "267330e1adfc66a718fb65fa6918c1f06d0a689e",
+          "paths": [
+            "LICENSE",
+            "skills/better-accessibility",
+            "skills/better-layout",
+            "skills/better-writing",
+            "skills/better-typography",
+            "skills/better-colors",
+            "skills/better-ui",
+            "skills/better-interface",
+            "skills/interface-review",
+            "skills/break",
+            "skills/variant",
+            "skills/explain-interface"
+          ],
+          "snapshot_sha256": "382a7c3dd8bf806a11223fbaa33ea0494c9d9d2b766950ba4fe31622db29aaa3",
+          "license": "MIT",
+          "license_path": "LICENSE"
+        },
+        {
+          "source": "https://github.com/jakubkrehel/make-interfaces-feel-better",
+          "commit": "35545ea1512ad59fa463e6b1f95ca9c052981fe6",
+          "paths": [
+            "LICENSE",
+            "skills/make-interfaces-feel-better"
+          ],
+          "snapshot_sha256": "f692cfbc668768a1cc8eeb3263f3dd6bf445abbc12c93b20aede563e28ace3bf",
+          "license": "MIT",
+          "license_path": "LICENSE"
+        }
+      ],
+      "local_changes": [
+        "Consolidate discovery into awesome-interface with conditional plain-file domain and workflow references.",
+        "Preserve review-only and explicit task intent boundaries; remove dependencies on independently installed upstream skills.",
+        "Use project conventions and existing color notation; separate accessibility requirements from aesthetic starting points.",
+        "Deduplicate shared UI rules and retain generation, improvement, review, stress, variant and explanation workflows."
+      ],
+      "excluded_sources": [
+        {
+          "source": "https://github.com/jakubkrehel/oklch-skill",
+          "commit": "daa2ec87cc80bc7e7e812f84c5b34d5990240fcb",
+          "reason": "No license identified in the cloned tree; no text or examples adopted. OKLCH guidance derives from the MIT better-colors source above."
+        }
+      ]
+    },
+    "diagram-design": {
+      "adopted_on": "2026-09-10",
+      "source": "cathrynlavery/diagram-design",
+      "ownership": "harness-owned; excluded from skills CLI updates",
+      "license": "MIT",
+      "license_path": "skills/diagram-design/LICENSE",
+      "previous_registration": null,
+      "snapshot_hash_recipe": "SHA-256 over selected source files sorted by relative POSIX path: UTF-8 path + NUL + file bytes + NUL. Directory paths expand recursively. Hashes describe upstream inputs, not the adapted output.",
+      "upstreams": [
+        {
+          "source": "https://github.com/cathrynlavery/diagram-design",
+          "commit": "562dbdf93ff3c3da630be4f90f4f6c2548175058",
+          "paths": [
+            "LICENSE",
+            "skills/diagram-design"
+          ],
+          "snapshot_sha256": "03ccd82e461c5185f451177799a88b196bd276a1d7edb6a535a451eb6cfb662c",
+          "license": "MIT",
+          "license_path": "LICENSE"
+        }
+      ],
+      "local_changes": [
+        "Add early routing to local mobile and Harness document output contracts; those contracts override conflicting upstream HTML, font, palette, and export defaults.",
+        "Scope repository-only verifier and linter mentions as optional upstream-checkout tooling; installed skills use the bundled self-check only for its stated general scope and explicit manual checks for uncovered type and registry invariants.",
+        "Add artifact-specific mobile classification and adaptation guidance for all forty types, with pinned baseline measurements and meaning-preserving reflow or splitting.",
+        "Add offline Slate document theme and export contracts for Markdown, HTML, and Word using existing writing-for-humans mechanisms, including background-matched borderless annotation masks.",
+        "Add four synthetic Korean Slate examples generated with AGY gemini-3.8-flash-high and a local gallery; mark artifacts verified only after standalone and document-embedded browser checks.",
+        "Retain the complete upstream skill, references, scripts, templates, examples, semantic patterns, import/export workflows, brand onboarding, and forty visual types."
+      ],
+      "excluded_sources": []
+    },
     "tdd": {
       "previous_registration": {
         "source": "mattpocock/skills",
@@ -190,8 +335,41 @@
         "updatedAt": "2026-08-06T12:13:15.256Z"
       },
       "installed_snapshot_sha256": "c97a305f5ca0b6fa21ca82a009ac5a553acd02aab63cf59de939f75ac7797393"
+    },
+    "git-commit": {
+      "adopted_on": "2026-09-09",
+      "source": "github/awesome-copilot",
+      "ownership": "harness-owned; excluded from skills CLI updates",
+      "license": "MIT",
+      "previous_registration": {
+        "source": "github/awesome-copilot",
+        "sourceType": "github",
+        "sourceUrl": "https://github.com/github/awesome-copilot.git",
+        "skillPath": "skills/git-commit/SKILL.md",
+        "skillFolderHash": "883a6a7466f55a9cd9f22cf1cce2d9333fc9b998",
+        "installedAt": "2026-09-03T09:27:28.410Z",
+        "updatedAt": "2026-09-03T09:27:28.410Z"
+      },
+      "snapshot_hash_recipe": "SHA-256 over selected source files sorted by relative POSIX path: UTF-8 path + NUL + file bytes + NUL. Directory paths expand recursively. Hashes describe upstream inputs, not the adapted output.",
+      "upstreams": [
+        {
+          "source": "https://github.com/github/awesome-copilot",
+          "commit": "7568a482ce2df38f8965ab5336a3220db796a4ba",
+          "paths": [
+            "skills/git-commit/SKILL.md"
+          ],
+          "snapshot_sha256": "6703a02ae1348ca6f99284259a734a8f2e9d51fb5f86083800e827795d62da9a",
+          "license": "MIT",
+          "license_path": "LICENSE"
+        }
+      ],
+      "local_changes": [
+        "Shorten description to commit, /commit, conventional commit message generation, and staging triggers; preserve the upstream body."
+      ],
+      "excluded_sources": []
     }
   },
+  "removed_on": "2026-09-09",
   "removed": [
     "ask-matt",
     "grill-me",

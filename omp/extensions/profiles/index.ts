@@ -1,7 +1,6 @@
 import type { ThinkingLevel } from "@oh-my-pi/pi-agent-core";
 import type { Model } from "@oh-my-pi/pi-ai";
 import type { ExtensionAPI, ExtensionContext } from "@oh-my-pi/pi-coding-agent";
-import { PORTABLE_INSTRUCTIONS, STATE_KEY } from "../native-compaction/state";
 import {
 	loadProfiles,
 	loadState,
@@ -38,6 +37,7 @@ export default function profilesExtension(pi: ExtensionAPI) {
 	);
 	const readState = () => loadState(pi.pi.getAgentDir());
 	let activeProfile: string | undefined;
+	let pendingProfile: string | undefined;
 	let lastModel: Model | undefined;
 	let launchEffortModel: Model | undefined;
 	const sessionEffort = new Map<
@@ -86,10 +86,7 @@ export default function profilesExtension(pi: ExtensionAPI) {
 		return boundary?.type === "compaction" ? boundary : undefined;
 	};
 	const hasNativeState = (ctx: ExtensionContext) =>
-		Boolean(
-			latestCompaction(ctx)?.preserveData?.openaiRemoteCompaction ||
-				latestCompaction(ctx)?.preserveData?.[STATE_KEY],
-		);
+		Boolean(latestCompaction(ctx)?.preserveData?.openaiRemoteCompaction);
 	const notifyError = (ctx: ExtensionContext, error: unknown) =>
 		ctx.ui.notify(
 			error instanceof Error ? error.message : String(error),
@@ -117,14 +114,10 @@ export default function profilesExtension(pi: ExtensionAPI) {
 			`컨텍스트 정리: ${usage.tokens} 토큰 → ${target.id}의 안전 기준 ${budget(target)} 토큰`,
 			"info",
 		);
-		await ctx.compact(
-			portable && latestCompaction(ctx)?.preserveData?.[STATE_KEY]
-				? `${PORTABLE_INSTRUCTIONS}${PRESERVE}`
-				: {
-						internalGuidance: PRESERVE,
-						...(portable ? { mode: "soft" as const } : {}),
-					},
-		);
+		await ctx.compact({
+			internalGuidance: PRESERVE,
+			...(portable ? { mode: "soft" as const } : {}),
+		});
 		if (portable && hasNativeState(ctx))
 			throw new Error(
 				"읽을 수 있는 인계문 생성에 실패하여 모델 전환을 중단했습니다. 현재 세션은 유지됩니다.",
@@ -155,6 +148,33 @@ export default function profilesExtension(pi: ExtensionAPI) {
 		lastModel = model;
 	}
 
+	async function applyProfileSwitch(
+		ctx: ExtensionContext,
+		name: string,
+		resolved: ReturnType<typeof resolveProfile>,
+		target: Model,
+	) {
+		// Prepare on the OLD model before any switch; failure leaves the selected model untouched.
+		await prepareContext(
+			ctx,
+			target,
+			ctx.model?.provider !== target.provider,
+		);
+		if (!(await pi.setModel(target)))
+			throw new Error(`${target.id}의 인증을 사용할 수 없습니다.`);
+		const key = modelKey(target) ?? `${target.provider}/${target.id}`;
+		if (sessionEffort.has(key)) setSessionEffort(key);
+		pi.setThinkingLevel(resolved.effort as ThinkingLevel);
+		activeProfile = name;
+		lastModel = target;
+		launchEffortModel = undefined;
+		pi.appendEntry("harness-profile", { name });
+		ctx.ui.notify(
+			`${name}: ${target.provider}/${target.id} · ${resolved.effort} (${resolved.effortSource})`,
+			"info",
+		);
+	}
+
 	pi.registerCommand("profile", {
 		description: "🎯 용도별 모델·effort 선택 (내장 역할 설정과 독립)",
 		getArgumentCompletions: (prefix) =>
@@ -166,14 +186,11 @@ export default function profilesExtension(pi: ExtensionAPI) {
 					description: entry.purpose,
 				})),
 		handler: async (args, ctx) => {
-			if (!ctx.isIdle()) {
-				ctx.ui.notify("모델 전환은 현재 응답이 끝난 뒤 가능합니다.", "warning");
-				return;
-			}
+			const isStreaming = !ctx.isIdle();
 			try {
 				const name =
 					args.trim() ||
-					(ctx.hasUI
+					(ctx.hasUI && !isStreaming
 						? await ctx.ui.select(
 								"🎯 용도 선택",
 								Object.entries(profiles.profiles).map(([label, entry]) => ({
@@ -183,6 +200,13 @@ export default function profilesExtension(pi: ExtensionAPI) {
 							)
 						: undefined);
 				if (!name) {
+					if (isStreaming) {
+						ctx.ui.notify(
+							"스트리밍 중에는 /profile <용도> 형태로 이름을 지정해야 합니다. 목록: omp-profile list",
+							"warning",
+						);
+						return;
+					}
 					if (!ctx.hasUI)
 						ctx.ui.notify("/profile <용도> — 목록: omp-profile list", "info");
 					return;
@@ -205,25 +229,24 @@ export default function profilesExtension(pi: ExtensionAPI) {
 					throw new Error(
 						`${target.id}에서 지원하지 않는 effort: ${resolved.effort}`,
 					);
-				// Prepare on the OLD model before any switch; failure leaves the selected model untouched.
-				await prepareContext(
-					ctx,
-					target,
-					ctx.model?.provider !== target.provider,
-				);
-				if (!(await pi.setModel(target)))
-					throw new Error(`${target.id}의 인증을 사용할 수 없습니다.`);
-				const key = modelKey(target) ?? `${target.provider}/${target.id}`;
-				if (sessionEffort.has(key)) setSessionEffort(key);
-				pi.setThinkingLevel(resolved.effort as ThinkingLevel);
-				activeProfile = name;
-				lastModel = target;
-				launchEffortModel = undefined;
-				pi.appendEntry("harness-profile", { name });
-				ctx.ui.notify(
-					`${name}: ${target.provider}/${target.id} · ${resolved.effort} (${resolved.effortSource})`,
-					"info",
-				);
+
+				if (isStreaming) {
+					if (ctx.model?.provider !== target.provider) {
+						ctx.ui.notify(
+							`스트리밍 중에는 다른 제공자(${target.provider})로 전환할 수 없습니다. 현재 응답이 끝난 뒤 실행하세요.`,
+							"warning",
+						);
+						return;
+					}
+					pendingProfile = name;
+					ctx.ui.notify(
+						`현재 응답이 끝난 뒤 ${name}(${target.id}) 프로필로 전환됩니다.`,
+						"info",
+					);
+					return;
+				}
+
+				await applyProfileSwitch(ctx, name, resolved, target);
 			} catch (error) {
 				notifyError(ctx, error);
 			}
@@ -238,10 +261,6 @@ export default function profilesExtension(pi: ExtensionAPI) {
 				.filter((value) => value.startsWith(prefix))
 				.map((value) => ({ value, label: value })),
 		handler: async (args, ctx) => {
-			if (!ctx.isIdle()) {
-				ctx.ui.notify("응답이 끝난 뒤 effort를 변경하세요.", "warning");
-				return;
-			}
 			try {
 				const tokens = args.trim().split(/\s+/);
 				const profileScope = tokens.includes("--profile");
@@ -284,8 +303,11 @@ export default function profilesExtension(pi: ExtensionAPI) {
 				if (effective && supported(model, effective))
 					pi.setThinkingLevel(effective as ThinkingLevel);
 				lastModel = model;
+				const streamingNotice = ctx.isIdle()
+					? ""
+					: " 현재 진행 중인 응답 이후 단계부터 반영됩니다.";
 				ctx.ui.notify(
-					`${profileScope ? "용도 공용값" : "현재 세션"} ${name}: ${level === "reset" ? "변경 해제" : level}.${profileScope ? "" : " 다른 세션과 공용 설정은 변경하지 않았습니다."}`,
+					`${profileScope ? "용도 공용값" : "현재 세션"} ${name}: ${level === "reset" ? "변경 해제" : level}.${profileScope ? "" : " 다른 세션과 공용 설정은 변경하지 않았습니다."}${streamingNotice}`,
 					"info",
 				);
 			} catch (error) {
@@ -297,6 +319,7 @@ export default function profilesExtension(pi: ExtensionAPI) {
 	function restoreSessionState(event: { type: string }, ctx: ExtensionContext) {
 		lastModel = ctx.model;
 		activeProfile = undefined;
+		pendingProfile = undefined;
 		sessionEffort.clear();
 		const branch = ctx.sessionManager.getBranch();
 		for (const entry of branch) {
@@ -406,6 +429,28 @@ export default function profilesExtension(pi: ExtensionAPI) {
 		return prompt && !event.systemPrompt.includes(prompt)
 			? { systemPrompt: [...event.systemPrompt, prompt] }
 			: undefined;
+	});
+	pi.on("agent_end", async (event, ctx) => {
+		if (event.willContinue) return;
+		if (!pendingProfile) return;
+		const name = pendingProfile;
+		pendingProfile = undefined;
+		try {
+			const resolved = resolveProfile(profiles, readState(), name);
+			if (resolved.runner !== "omp") return;
+			const target = ctx.models.resolve(
+				`${resolved.provider}/${resolved.model}`,
+			);
+			if (
+				!target ||
+				resolved.effort === null ||
+				!supported(target, resolved.effort)
+			)
+				return;
+			await applyProfileSwitch(ctx, name, resolved, target);
+		} catch (error) {
+			notifyError(ctx, error);
+		}
 	});
 	pi.on("session.compacting", () => ({ context: [PRESERVE] }));
 }

@@ -84,7 +84,11 @@ bun test herdr/cron/host-sync.test.mjs
 
 직접 통제가 필요한 스킬을 편입할 때에는 상류 라이선스를 먼저 확인하고 원저작자 고지를 유지합니다. 관리형 사본과 편입 정본을 동시에 활성화하지 않습니다. 출처, 선택한 버전, 보존한 라이선스는 `third-party/adopted-skills.json`과 구성요소 옆의 고지에 기록합니다.
 
-이후 수정은 `skills/`의 정본에서 수행합니다. 실제 평가 출력, 임시 작업공간, 모델 응답은 `var/`에 두며 배포하지 않습니다.
+이후 수정은 `skills/`의 정본에서 수행합니다. `mattpocock/skills`에서 선택한 14개는 정본으로 유지하고, `third-party/adopted-skills.json`의 제거 목록에 있는 나머지 13개는 설치·배포 대상에서 제외합니다. 실제 평가 출력, 임시 작업공간, 모델 응답은 `var/`에 두며 배포하지 않습니다.
+
+`awesome-interface`는 Jakub Krehel의 MIT 스킬을 재구성한 단일 진입점입니다. 여섯 전문 영역과 리뷰·변경 리뷰·스트레스·대안·설명 절차는 내부 참조 문서로 유지합니다. `third-party/adopted-skills.json`의 최상위 출처·날짜는 최초 편입 묶음의 기록이며, 이 스킬은 개별 항목의 출처·revision·입력 해시·로컬 변경 기록을 사용합니다. 라이선스가 확인되지 않은 `oklch-skill`의 고유 콘텐츠는 포함하지 않았습니다.
+
+`git-commit`은 [github/awesome-copilot](https://github.com/github/awesome-copilot/tree/7568a482ce2df38f8965ab5336a3220db796a4ba)의 MIT 스킬을 2026-09-09에 편입했습니다. 본문은 그대로 두고 description만 트리거 조건으로 줄였습니다. 같은 날 `daily-report`, `code-review`, `diagnosing-bugs`, `tdd`, `writing-for-agents`의 description도 줄였습니다. description은 시스템 프롬프트에 항상 실리는 유일한 부분이므로 절차 설명은 본문에 두고, 이웃 스킬과 겹치는 트리거는 한쪽에만 둡니다. 근거는 `docs/FACTS.md` 11절에 있습니다.
 
 ## 서드파티 스킬과 Herdr 플러그인
 

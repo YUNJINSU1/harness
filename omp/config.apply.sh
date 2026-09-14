@@ -25,10 +25,6 @@ command -v omp >/dev/null 2>&1 || { echo "error: omp is not on PATH" >&2; exit 2
 command -v python3 >/dev/null 2>&1 || { echo "error: python3 is not on PATH" >&2; exit 2; }
 command -v bun >/dev/null 2>&1 || { echo "error: bun is not on PATH" >&2; exit 2; }
 ROOT="$(cd "$(dirname "$0")" && pwd)"
-# Recoverable shake requires the matching runtime patch before any settings write.
-if [[ "$MODE" == apply ]]; then
-  bun "$ROOT/native-runtime.ts" --check
-fi
 
 # Each desired value is canonical JSON. Strings are unquoted before `config set`;
 # arrays, objects, booleans, and numbers are passed as JSON.
@@ -43,11 +39,13 @@ composer.shape|"box"
 statusLine.transparent|false
 statusLine.compactThinkingLevel|false
 statusLine.preset|"full"
+compaction.enabled|true
 compaction.keepRecentTokens|40000
-compaction.methodOrder|["shake","remote","handoff","soft"]
+compaction.methodOrder|["remote","handoff","soft"]
 compaction.handoffSaveToDisk|true
 compaction.thresholdTokens|-1
 compaction.thresholdPercent|75
+generate_image.enabled|true
 tools.xdevDocs|"catalog"
 tools.intentTracing|false
 startup.checkUpdate|true
@@ -70,6 +68,7 @@ retry.usageAwareFallback|true
 retry.usageReservePct|10
 retry.usageReservePolicy|"auto"
 cycleOrder|["smol","mid","default","slow"]
+providers.imageOrder|["openai-codex"]
 providers.cacheRetention|"auto"
 EOF
 
