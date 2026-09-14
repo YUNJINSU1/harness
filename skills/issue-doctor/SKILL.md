@@ -1,7 +1,6 @@
 ---
 name: issue-doctor
-description: Diagnose whether tracked issues still hold and expose evidence-backed drift among repository claims, implementation, and external precedent. Use by name for issue staleness reviews, repository claim audits, and corpus evidence-health checks.
-disable-model-invocation: true
+description: Diagnose whether tracked issues still hold and expose evidence-backed drift among repository claims, implementation, and external precedent. Use for issue staleness reviews, repository claim audits, and corpus evidence-health checks.
 ---
 
 # Issue Doctor

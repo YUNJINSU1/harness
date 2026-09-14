@@ -1,7 +1,6 @@
 ---
 name: reference
-description: Register or revisit external primary-source precedent as version-pinned evidence when a task needs reproducible facts from source code, a specification, or a live service.
-disable-model-invocation: true
+description: Register or revisit external primary-source precedent as version-pinned evidence. Use when a task needs reproducible facts from source code, a specification, or a live service, or when an earlier claim must be re-grounded.
 ---
 
 # Reference
