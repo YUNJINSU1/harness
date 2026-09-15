@@ -188,12 +188,26 @@
           "snapshot_sha256": "6584a6759111a886077423e863d24bc9498ea92455adffe1843ac8397c6f68f2",
           "license": "MIT",
           "license_path": "LICENSE"
+        },
+        {
+          "source": "https://github.com/s1dashu/ip-as-logo-skill",
+          "commit": "acb834c717bcd0a487c49732d08397ba280d690b",
+          "paths": [
+            "LICENSE",
+            "SKILL.md"
+          ],
+          "snapshot_sha256": "923a03e233e616491b741e827a6a5c464caa13b2fe4d7b2f61146e92339218bf",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "retained_license_path": "skills/imagegen/LICENSE.ip-as-logo"
         }
       ],
       "local_changes": [
-        "Consolidate web, mobile and brandkit entry points into one imagegen skill with plain-file frontend/common, frontend/web, frontend/mobile and brandkit references.",
+        "Consolidate web, mobile, logo and brandkit entry points into one imagegen skill with plain-file branch references; rounded-ip is an opt-in logo preset, not a registered skill.",
         "Use the actual documented generator and inspected artifacts; preserve owned assets and separate primary images from optional details.",
-        "Keep platform, responsive viewport and concept-versus-production boundaries explicit; remove mandatory section counts, style bans and fictional claims."
+        "Keep platform, responsive viewport and concept-versus-production boundaries explicit; remove mandatory section counts, style bans and fictional claims.",
+        "Add wordmark, symbol, mascot, combination-mark and emblem decisions with type-specific inspection; distinguish standalone logo development from brand application boards.",
+        "Retain the upstream rounded mascot silhouette, dominant lower-corner primary, chromatic background, subtle depth and character-image prompt treatment; replace fixed batches, repeated approval, model allowlists and uninspected delivery with the shared workflow."
       ]
     },
     "design-md": {

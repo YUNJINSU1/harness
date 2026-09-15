@@ -62,6 +62,57 @@
         "Does not impose native navigation or claim responsive behavior can be proved by static pixels.",
         "Does not claim generation or inspection occurred."
       ]
+    },
+    {
+      "id": 6,
+      "name": "standalone-wordmark-not-board-or-mascot",
+      "prompt": "Plan only; no image tool is supplied and no artifact may be claimed. State the image-set contract, planned type-specific inspection, and completion boundary. For the fictional notebook product NORI, make exactly one standalone uppercase wordmark, with geometric sans-serif lettering on a light background. No symbol, mascot, application mockup, or brand board. The brief and one-image count are settled; do not reopen them.",
+      "expected_output": "Plans one lettering-only logo primary, preserving exact NORI text and the settled count. Uses the logo branch rather than a board or rounded-character preset, and checks lettering at the intended width without promising vector outlines or a specific font.",
+      "files": [],
+      "expectations": [
+        "Keeps exactly one standalone wordmark and adds no mascot, symbol, board, or fixed six-image batch.",
+        "Plans exact lettering, spacing and legibility checks at an appropriate application width rather than imposing a 32px square on the wordmark.",
+        "Does not claim generation, font fidelity, vector masters or trademark clearance."
+      ]
+    },
+    {
+      "id": 7,
+      "name": "mascot-combination-without-rounded-preset",
+      "prompt": "Plan only; no image tool is supplied and no artifact may be claimed. State the image-set contract, planned type-specific inspection, and completion boundary. Create exactly two horizontal combination-mark candidates for the fictional archival tool FOLIO. Each pairs a sharply angular geometric owl mascot with the exact wordmark FOLIO. Use black and white. Show the complete owl and wordmark with clear space. This is not a cute rounded character or a corner-cropped avatar.",
+      "expected_output": "Combines mascot identity with a horizontal wordmark arrangement while retaining the requested angular style and two-image count. Does not activate the rounded-IP preset just because the mark is a mascot; keeps standalone framing and type-specific checks.",
+      "files": [],
+      "expectations": [
+        "Treats mascot, combination arrangement and angular style as compatible dimensions rather than exclusive types.",
+        "Retains two black-and-white candidates with complete shapes; does not impose rounded features, a third color, square corner crops, or six outputs.",
+        "Plans spelling, symbol/wordmark scale and spacing, black-and-white fidelity and small-use legibility; does not claim grayscale alone proves single-ink production.",
+        "Makes no generated or inspected artifact claim."
+      ]
+    },
+    {
+      "id": 8,
+      "name": "logo-to-board-owned-symbol-boundary",
+      "prompt": "Plan only; the assets are hypothetical and no generation tool is supplied. Using an owned leaf symbol whose geometry and color must remain unchanged, create one horizontal symbol-plus-wordmark concept for the fictional name NORI, then one identity application board using that same lockup. Only the new lettering and arrangement are open to design. You may use a clearly provisional direction without another approval round. Explain what happens if an image model changes the supplied leaf.",
+      "expected_output": "Plans the logo first and then its reuse in the board as two separately labeled primary outputs. Preserves the owned symbol, proposes only lettering/arrangement and permitted applications, uses documented input-image support, and treats source drift as a defect rather than silently approving an approximation.",
+      "files": [],
+      "expectations": [
+        "Distinguishes the standalone lockup primary from the board primary and establishes the logo direction before board generation.",
+        "Preserves the owned leaf through supported input-image use and actual-source comparison rather than reinventing it per output.",
+        "If the leaf drifts, refines the affected output or reports preservation failure and withholds an approved claim.",
+        "Labels the chosen direction provisional, excludes production assets, and claims no execution in this planning-only exercise."
+      ]
+    },
+    {
+      "id": 9,
+      "name": "rounded-ip-preserves-upstream-visual-contract",
+      "prompt": "Plan only; no image tool is supplied and no artifact may be claimed. Create exactly one primary mouse character image for the fictional notebook NORI in the upstream IP-as-Logo style. Explain the primary framing, character proportions, palette, finish, generator prompt strategy, and visual inspection. The style and one-image count are settled; do not add a brand board or other deliverables.",
+      "expected_output": "Plans one dominant square lower-corner character image as the primary, retaining large-head proportions, solid chromatic background, simple color masses and barely-there neo-skeuomorphic depth. Uses the preset's character-image prompt treatment rather than a generic standalone-logo template.",
+      "files": [],
+      "expectations": [
+        "The one primary fills most of a square and emerges from a lower corner, not a small centered full-body character or an optional avatar requiring a second primary.",
+        "Retains a large soft head, simplified features, two character color families and a solid contrasting chromatic background, with subtle rather than absent or toy-like depth.",
+        "Describes the character image itself to the generator without generic logo/app-icon/transparent-asset scaffolding.",
+        "Plans visual comparison for the selected style and small-size recognition, keeps the one-image count, and claims no generated artifact."
+      ]
     }
   ]
 }

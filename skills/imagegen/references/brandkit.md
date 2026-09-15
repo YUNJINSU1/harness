@@ -1,6 +1,6 @@
 # Brand identity concept boards
 
-Use this branch for a brand identity overview, logo-system concept, or visual-world board. The output is an inspectable concept image, not automatic trademark clearance, vector masters, font files, print-ready artwork, or a complete production asset package.
+Use this branch for a brand identity overview, application, or visual-world board. Standalone logo candidates and lockup development belong to [Logo](logo.md). If the brief includes both new logo development and a board, establish the logo direction first and reuse it across applications; an existing owned logo needs preservation, not another generation phase. The output is an inspectable concept image, not automatic trademark clearance, vector masters, font files, print-ready artwork, or a complete production asset package.
 
 ## Choose identity mode
 

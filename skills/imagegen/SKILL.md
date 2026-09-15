@@ -1,6 +1,6 @@
 ---
 name: imagegen
-description: "Generate inspectable design-reference images for web sections, native mobile screens and flows, responsive website comps, and brand identity concept boards. Use when the requested deliverable is UI reference imagery or a brand-system board. Not for generic photos, illustrations, diagrams, slide decks, arbitrary image editing, or frontend implementation."
+description: "Generate inspectable design-reference images for web sections, native mobile screens and flows, responsive website comps, standalone logos (wordmark, symbol, mascot, combination mark, emblem), and brand identity concept boards. Use when the deliverable is UI imagery, logo concepts, or a brand-system board. Not for generic photos, illustrations, diagrams, slide decks, arbitrary image editing, production vector assets, or frontend implementation."
 license: MIT
 ---
 
@@ -15,7 +15,9 @@ Create design-reference images, inspect the actual files, and return them with a
 | Website section, landing page, marketing/product-site comp | [Frontend common](references/frontend/common.md), then [Web](references/frontend/web.md) |
 | Native iOS, Android, or cross-platform app screen/flow | [Frontend common](references/frontend/common.md), then [Mobile](references/frontend/mobile.md) |
 | Responsive website shown at a phone viewport | [Frontend common](references/frontend/common.md), then [Web](references/frontend/web.md); treat it as a website, not a native app |
-| Brand identity, logo-system concept, or brand-guidelines board | [Brand kit](references/brandkit.md) |
+| Standalone logo candidates or lockup variants: wordmark, symbol, mascot, combination mark, emblem | [Logo](references/logo.md); read a style preset only when that direction is selected |
+| Brand identity, application, or brand-guidelines concept board | [Brand kit](references/brandkit.md) |
+| New logo development together with a brand concept board | [Logo](references/logo.md) and [Brand kit](references/brandkit.md); establish the logo direction first, then reuse it in the board |
 
 For a combined brief, read every applicable branch and keep its outputs separately labeled. Route generic photos or illustrations to the environment's general image workflow, diagrams to a diagram workflow, and slide decks to a presentation workflow. A request outside these branches is not an imagegen task.
 
@@ -68,7 +70,7 @@ Return:
 
 1. each artifact path and label;
 2. whether it is a **primary** image or an optional **detail** frame;
-3. section/screen/board role, viewport or platform, and sequence where relevant;
+3. section/screen/logo/board role, viewport or intended application size, platform, and sequence where relevant;
 4. what is **approved/preserved** versus **proposed**;
 5. known copy, tokens, and supplied assets used;
 6. unknown behavior, uncertain pixel text, unsupported dimensions/formats, or production assets not delivered;
