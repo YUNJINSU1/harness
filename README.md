@@ -13,6 +13,7 @@ Harness connects an existing [Oh My Pi](https://github.com/can1357/oh-my-pi) (OM
 | Capability | What you get |
 | --- | --- |
 | Shared skills | Repository-owned instructions linked into OMP, Claude Code, and AGY, with retained notices for adopted material. |
+| UI design workflows | Four focused skills for interface design/review, image-to-web implementation, UI/brand reference-image generation, and optional design-system documentation; no mandatory image or document pipeline. See [usage](docs/guides/usage.md). |
 | Model profiles | Purpose-based model and effort selection through `/profile` and `omp-profile`; `/effort` can remain local to one session. |
 | Session account pinning | OMP's built-in `/session pin` provides manual, per-session account selection. Harness does not synchronize an account choice across sessions. |
 | Context compaction | OMP's built-in compaction, managed through six policy keys, without a custom OMP build or runtime patch. |

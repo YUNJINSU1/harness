@@ -1,6 +1,6 @@
 ---
 name: awesome-interface
-description: "Design, improve, and review product interfaces: accessibility, layout, UI copy, typography, color systems, and visual polish or motion. Use for focused UI fixes, palettes, complete screen or flow reviews, and explicitly requested UI change reviews, stress tests, design alternatives, or interface explanations. Not for API interface design, general document writing, or backend-only code review."
+description: "Design, improve, and review product interfaces: accessibility, layout, UI copy, typography, color systems, and visual polish or motion. Use for new UI art direction, authorized redesigns, focused UI fixes, palettes, complete screen or flow reviews, and explicitly requested UI change reviews, stress tests, design alternatives, or interface explanations. Not for image generation, screenshot-to-code implementation, design-system document authoring, API interface design, or backend-only code review."
 license: MIT
 ---
 
@@ -21,6 +21,8 @@ Use the user's language and existing product voice. Preserve deliberate density,
 | User intent | Read and do |
 | --- | --- |
 | Build, improve, or fix a specific UI concern; generate a palette or product copy | Load the relevant domains below, implement within scope, then verify the changed surface. No review report is required unless requested. |
+| Create a new screen or site that needs visual direction | [Art direction](references/art-direction.md), then only the domains needed to implement the brief. Skip this workflow for a bounded component fix. |
+| Redesign an existing interface | [Redesign](references/redesign.md) to establish what is preserved and what may change, then the affected domains. “Improve” alone is not permission to replace the brand or information architecture. |
 | Review a screen, component, or complete flow | [Review](references/review.md) and [report format](assets/review-format.md). For a comprehensive review, load all six domains in the listed order. |
 | Review UI changes in a branch, PR, commit range, or uncommitted work | [Change review](references/change-review.md), [review](references/review.md), and [report format](assets/review-format.md). Resolve the change scope internally; do not ask the user to invoke another skill. |
 | Deliberately stress a component with hostile content, sizes, or states | [Stress test](references/stress-test.md), plus domains implicated by the component. Use an isolated local fixture, not production data. |
@@ -28,6 +30,8 @@ Use the user's language and existing product voice. Preserve deliberate density,
 | Explain how a supplied interface, screenshot, or site works | [Explain](references/explain.md), plus domains needed for the question. Distinguish visible evidence from inferred implementation. |
 
 Change review, stress testing, alternatives, and external-interface explanation require explicit task intent. A branch name, the word “break,” or a URL in unrelated context does not select these modes. These are instruction-level conditions, not host-enforced per-mode permissions. Do not run every workflow because the user invoked this skill by name; infer the requested outcome from context and ask only if it remains materially ambiguous.
+
+Separate deliverables have separate owners: `imagegen` generates UI or brand images; `image-to-code` implements a supplied or generated web reference; `design-md` authors or updates a requested design-system document. None is a prerequisite here. Those skills may read individual domain references below without activating this skill's full workflow.
 
 ## 3. Load only the domains needed
 

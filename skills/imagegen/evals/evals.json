@@ -1,0 +1,67 @@
+{
+  "skill_name": "imagegen",
+  "evals": [
+    {
+      "id": 1,
+      "name": "web-primary-vs-detail-count",
+      "prompt": "Plan the image-generation workflow only. The described assets are hypothetical; no input files or generation tools are provided in this exercise. State the required inputs, image-set contract, preservation checks, and completion boundary without claiming any artifact exists:\n\nCreate design-reference images for exactly three horizontal sections of a synthetic field-notes product site: hero, collection browser, and final signup. Make each section readable for implementation. Add a close detail only if one component genuinely needs it, and make clear what counts toward the section total.",
+      "expected_output": "Plans, rather than claims to execute: Uses the documented available image generator and returns three separately inspectable horizontal primary images, one per named section. Any useful close-up is separately labeled as a detail and excluded from the primary count. The sequence varies composition while retaining one coherent product system, contains no invented proof, and includes the image-only handoff and actual-output inspection; if generation is unavailable, it reports that instead of fabricating artifacts or code.",
+      "files": [],
+      "expectations": [
+        "In the plan: Declares and delivers exactly three primary horizontal section images; does not collapse sections into a tall page or contact sheet.",
+        "In the plan: Labels optional close-ups as details outside the primary count and never uses one to replace a primary.",
+        "In the plan: Inspects actual outputs and reports paths, viewport, preserved/proposed content, and unknown behavior without implementing code.",
+        "Does not claim images were generated or visually inspected in this planning-only exercise."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "native-mobile-platform-scope",
+      "prompt": "Plan the image-generation workflow only. The described assets are hypothetical; no input files or generation tools are provided in this exercise. State the required inputs, image-set contract, preservation checks, and completion boundary without claiming any artifact exists:\n\nGenerate a four-screen Android-native concept for a synthetic neighborhood tool-share app: browse, item detail, request sheet, and confirmation. Keep it buildable, readable, and consistent. This is a native app, not a responsive website, and this phase must produce images only.",
+      "expected_output": "Plans, rather than claims to execute: Selects Android-native patterns, safe areas, navigation and device framing intentionally; produces a coherent four-screen flow with readable separate outputs and actual inspection. It does not substitute iOS cues, a phone-sized website, source code, or unsupported interaction claims.",
+      "files": [],
+      "expectations": [
+        "In the plan: Produces the four requested Android-native screen roles in a logical sequence with consistent state and design language.",
+        "In the plan: Accounts for Android navigation, safe areas/system insets, readable controls, and coherent device presentation while distinguishing the result from responsive web.",
+        "In the plan: Returns inspected image artifacts and an image-only handoff; unavailable generation is reported rather than faked.",
+        "Does not claim images were generated or visually inspected in this planning-only exercise."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "brand-preservation-concept-delivery",
+      "prompt": "Plan the image-generation workflow only. The described assets are hypothetical; no input files or generation tools are provided in this exercise. State the required inputs, image-set contract, preservation checks, and completion boundary without claiming any artifact exists:\n\nUsing the supplied owned logo, wordmark, forest/cream palette, and type specimen, create one identity concept board for a fictional community seed library. Preserve those assets exactly and propose only image direction and two coherent applications. Deliver a concept board only; do not claim vector masters, font files, tokens, trademark clearance, or print-ready assets.",
+      "expected_output": "Plans, rather than claims to execute: Treats supplied identity assets as authoritative inputs, preserves and visually compares them, and limits proposals to image direction and two coherent applications tied to a core metaphor. The handoff distinguishes preserved from proposed material and explicitly excludes absent vector, font, token, legal, and production deliverables.",
+      "files": [],
+      "expectations": [
+        "In the plan: Uses documented input-image support when available and checks the generated logo/wordmark against the supplied owned source; any preservation limitation prevents an approved claim.",
+        "In the plan: Builds a coherent concept board with brand strategy/core metaphor, functional palette/type/image direction, and the two requested applications.",
+        "In the plan: Returns an inspected concept image and does not represent generated pixels as production-ready vector, font, token, legal, or print assets.",
+        "Does not claim images were generated or visually inspected in this planning-only exercise."
+      ]
+    },
+    {
+      "id": 4,
+      "name": "negative-generic-image-scope",
+      "prompt": "Generate a photorealistic image of a red fox crossing a snowy meadow for a nature article. No interface, app, website, or brand identity board is involved.",
+      "expected_output": "Does not invoke the imagegen UI/brand-board workflow; routes the generic photo request to the environment's general image-generation capability without loading frontend or brandkit branches.",
+      "files": [],
+      "expectations": [
+        "Recognizes that a generic editorial photo is outside this skill's web/mobile UI and brand-board scope.",
+        "Does not apply section, screen-flow, device, or brand-board contracts to the request."
+      ]
+    },
+    {
+      "id": 5,
+      "name": "responsive-web-not-native",
+      "prompt": "Plan one primary reference image for a 390px-wide portrait responsive website signup section. It is not a native app. No image tools are provided; do not generate or claim an artifact. Explain branch, orientation, count and verification boundary.",
+      "expected_output": "Uses the web branch with one portrait primary at the requested phone-width viewport, no native-app conventions or forced horizontal desktop canvas, and no invented generation.",
+      "files": [],
+      "expectations": [
+        "Selects the web branch and respects the requested portrait orientation and one primary image.",
+        "Does not impose native navigation or claim responsive behavior can be proved by static pixels.",
+        "Does not claim generation or inspection occurred."
+      ]
+    }
+  ]
+}

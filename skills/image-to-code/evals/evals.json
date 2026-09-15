@@ -1,0 +1,69 @@
+{
+  "skill_name": "image-to-code",
+  "evals": [
+    {
+      "id": 1,
+      "name": "selected-reference-preservation",
+      "prompt": "This is a workflow decision exercise, not an implementation run. The paths and repository facts below are hypothetical inputs; do not access files or tools, claim execution, or create artifacts. Give the concrete next actions, preservation boundary, and verification plan for this request:\n\nImplement the approved web homepage reference at references/home-approved.png in the existing React application. I supplied the image, confirmed we may use it, and selected it over references/home-alternative.png. The repository already contains the logo, fonts, color tokens, routes, and copy. Do not generate another image or redesign the brand. Exercise the result at the reference's 1440px width and the app's supported narrow width.",
+      "expected_output": "Plans, rather than claims to execute: Inventories and analyzes the selected supplied reference, preserves repository-backed brand/content and the selected visual direction, implements in the existing stack without mandatory regeneration, and reports actual-width runtime evidence and limits.",
+      "files": [],
+      "expectations": [
+        "In the plan: Uses references/home-approved.png as the primary visual source and does not silently switch to or blend the alternative.",
+        "In the plan: Reuses repository primitives, assets, fonts, tokens, routes, and copy rather than introducing a parallel design system or invented content.",
+        "In the plan: Implements and exercises the running web interface at the selected reference width and a supported narrow width, reporting exact evidence and limits.",
+        "Does not claim files were inspected, code was implemented, or runtime checks passed in this decision-only exercise."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "unknown-interaction-and-brand-facts",
+      "prompt": "This is a workflow decision exercise, not an implementation run. The paths and repository facts below are hypothetical inputs; do not access files or tools, claim execution, or create artifacts. Give the concrete next actions, preservation boundary, and verification plan for this request:\n\nA generated dashboard image shows a chevron beside 'Revenue', a '42% faster' metric, a customer quote, and a logo-like wordmark. The repository confirms none of those values, customers, interactions, or brand marks. Implement only what can be supported by the existing product, and clearly account for the unknowns. Do not ask image pixels to define backend behavior.",
+      "expected_output": "Plans, rather than claims to execute: Separates visible appearance from inferred behavior and unsupported product facts; does not fabricate a dropdown, metric, testimonial, customer, or brand mark, and reports unresolved scope precisely.",
+      "files": [],
+      "expectations": [
+        "In the plan: Labels the chevron's behavior and generated factual content as unknown or proposed rather than repository-backed.",
+        "In the plan: Does not invent dropdown functionality, metrics, testimonials, customers, or brand history from generated pixels.",
+        "In the plan: Preserves verified product behavior and content while reporting any blocked factual content separately from implementable visual structure.",
+        "Does not claim files were inspected, code was implemented, or runtime checks passed in this decision-only exercise."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "native-app-boundary",
+      "prompt": "This is a workflow decision exercise, not an implementation run. The paths and repository facts below are hypothetical inputs; do not access files or tools, claim execution, or create artifacts. Give the concrete next actions, preservation boundary, and verification plan for this request:\n\nTurn this iPhone settings screenshot into a production SwiftUI app and promise that it behaves like the original native application. There is no native project or behavior specification in the repository.",
+      "expected_output": "Plans, rather than claims to execute: States the web implementation boundary and does not promise or fabricate native-mobile implementation or behavior; makes no unrelated web substitute or repository edits.",
+      "files": [],
+      "expectations": [
+        "In the plan: Does not claim native iOS implementation support or behavior fidelity from a screenshot.",
+        "In the plan: Does not silently substitute a web implementation or edit unrelated files.",
+        "Does not claim files were inspected, code was implemented, or runtime checks passed in this decision-only exercise."
+      ]
+    },
+    {
+      "id": 4,
+      "name": "image-stage-to-code-transition",
+      "prompt": "This is a workflow decision exercise, not an implementation run. The paths and repository facts below are hypothetical inputs; do not access files or tools, claim execution, or create artifacts. Give the concrete next actions, preservation boundary, and verification plan for this request:\n\nThe imagegen stage is complete. Its handoff identifies references/landing-wide.png as the approved 1366px composition and references/pricing-detail.png as a proposed detail, with known tokens/assets and unknown accordion behavior. Continue now by implementing the landing page in the existing web repository and verify the running result. Do not stop at another image-only response.",
+      "expected_output": "Plans, rather than claims to execute: Consumes the handoff, analyzes approved/proposed references, transitions into real repository implementation, preserves unknown behavior as unknown, and exercises the running interface instead of regenerating images or returning analysis only.",
+      "files": [],
+      "expectations": [
+        "In the plan: Treats image generation as complete and proceeds to code-phase repository inspection and implementation.",
+        "In the plan: Keeps approved versus proposed references and unknown accordion behavior explicit rather than inventing it.",
+        "In the plan: Runs the actual interface at the handoff width and applicable responsive/interactive states, reporting observed results and verification limits.",
+        "Does not claim files were inspected, code was implemented, or runtime checks passed in this decision-only exercise."
+      ]
+    },
+    {
+      "id": 5,
+      "name": "generation-tool-partial-blocker",
+      "prompt": "This is a workflow decision exercise, not an implementation run. The paths and repository facts below are hypothetical inputs; do not access files or tools, claim execution, or create artifacts. Give the concrete next actions, preservation boundary, and verification plan for this request:\n\nImplement a three-section campaign page. references/intro.png and references/features.png are approved and usable, but the requested final gallery has no reference or repository assets. Image generation is unavailable in this environment. Complete every code-phase part that the existing references support and report the exact remaining boundary.",
+      "expected_output": "Plans, rather than claims to execute: Reuses and implements the two usable sections without claiming the whole task is blocked; identifies only the missing gallery image-dependent scope and unavailable generation capability as blocked, with truthful verification coverage.",
+      "files": [],
+      "expectations": [
+        "In the plan: Does not require regeneration for the approved intro and features references.",
+        "In the plan: Names unavailable image generation as a blocker only for the missing gallery's image-dependent scope.",
+        "In the plan: Implements and verifies reachable code-phase work and does not claim the absent gallery reference or full page was verified.",
+        "Does not claim files were inspected, code was implemented, or runtime checks passed in this decision-only exercise."
+      ]
+    }
+  ]
+}
