@@ -87,5 +87,5 @@ command = "bash \"$HOME/.config/herdr/scripts/sidebar-toggle.sh\""
 description = "Sidebar: toggle pasture + usage"
 
 [theme]
-name = "tokyo-night"
+name = "terminal"
 auto_switch = false
