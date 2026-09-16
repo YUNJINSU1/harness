@@ -1,0 +1,60 @@
+{
+  "skill_name": "design-md",
+  "evals": [
+    {
+      "id": 1,
+      "name": "extract-current-tokens-without-restyling",
+      "prompt": "명시적으로 디자인 시스템 문서를 작성해 주세요. 현재 소스 src/styles/tokens.css에는 --surface: #ffffff, --text-primary: #17202a, --action: #1264a3가 있고 src/components/Button.tsx는 이 변수를 사용합니다. 이 구현을 현재 사실로 추출하되 색상·토큰 이름·버튼 스타일을 재설계하거나 새 런타임 토큰을 만들지 마세요. 소스 owner 링크와 근거 상태가 드러나는 DESIGN.md 본문을 응답에 작성하세요.",
+      "expected_output": "Documents the supplied token names, values, semantic roles, and runtime owners as Current without inventing a replacement palette or editing runtime definitions.",
+      "files": [],
+      "expectations": [
+        "Documents the supplied token names, values, semantic roles, and runtime owners as Current.",
+        "Does not invent a replacement palette, rename tokens, or edit runtime definitions."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "supplied-screenshot-unknowns",
+      "prompt": "제품 스크린샷을 바탕으로 DESIGN.md 초안을 만들어 주세요. 화면에서 밝은 배경, 진한 본문, 왼쪽 정렬 제목, 둥근 기본 버튼만 보입니다. 소스 코드, computed style, 폰트 파일, 다른 viewport나 상태는 제공되지 않았습니다. 보이는 사실과 확인할 수 없는 토큰 값·폰트명·반응형·모션·접근성 준수를 분리하세요.",
+      "expected_output": "Records only visible composition as visual evidence and marks exact values, font identity, runtime behavior, responsiveness, motion, provenance, and compliance as Unknown rather than fabricating them.",
+      "files": [],
+      "expectations": [
+        "Records only visible composition as visual evidence.",
+        "Marks exact values, font identity, runtime behavior, responsiveness, motion, provenance, and compliance as Unknown rather than fabricating them."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "optional-stitch-export",
+      "prompt": "기존 디자인 문서에서 현재 값으로 검증된 --brand: #0b6e4f와 12px 카드 radius를 사용해 Stitch용 설명을 내보내 주세요. 정적 화면에는 카드 기본 상태만 보이게 하고, 승인됐지만 아직 구현되지 않은 reduced-motion 동작은 런타임 의도로 분리하세요. Stitch나 MCP를 호출하거나 게시하지 마세요. 새 폰트, 팔레트, 테마, 모션 값을 추가하지 마세요.",
+      "expected_output": "Produces a semantic Stitch-ready description with only verified values, separates static composition from approved runtime intent, and performs no Stitch/MCP/publication action.",
+      "files": [],
+      "expectations": [
+        "Produces a semantic Stitch-ready description with only the supplied verified values.",
+        "Separates static composition from approved runtime intent and performs no Stitch, MCP, or publication action."
+      ]
+    },
+    {
+      "id": 4,
+      "name": "update-existing-document-no-duplicate",
+      "prompt": "저장소의 디자인 시스템 owner는 docs/product/design-system.md이며 루트 DESIGN.md는 없습니다. 승인된 의도 변경은 compact 테이블 row를 36px에서 40px로 바꾸는 것이지만 구현은 아직 36px입니다. 기존 문서를 그 경로에서 갱신하는 변경안을 제시하세요. 새 DESIGN.md를 만들지 말고 현재 구현과 승인된 의도를 구분하며 src/styles/density.css owner 링크를 보존하세요.",
+      "expected_output": "Updates only the existing repository-owned document, preserves its runtime-owner link, records 36px as Current and 40px as Approved, and creates no duplicate artifact.",
+      "files": [],
+      "expectations": [
+        "Uses only the existing docs/product/design-system.md path and preserves the runtime-owner link.",
+        "Records 36px as Current and 40px as Approved rather than claiming implementation or creating a duplicate artifact."
+      ]
+    },
+    {
+      "id": 5,
+      "name": "ordinary-ui-fix-negative",
+      "prompt": "설정 화면의 저장 버튼 padding이 인접 버튼과 다릅니다. 기존 shared Button token을 사용하도록 이 UI 문제만 수정하세요. 디자인 시스템 문서 작성이나 업데이트는 요청하지 않았습니다.",
+      "expected_output": "Routes to the focused UI implementation workflow and does not create or require a DESIGN.md or design-system artifact.",
+      "files": [],
+      "expectations": [
+        "Routes to the focused UI implementation workflow.",
+        "Does not create or require a DESIGN.md or other design-system artifact."
+      ]
+    }
+  ]
+}

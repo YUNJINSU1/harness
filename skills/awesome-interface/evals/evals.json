@@ -115,6 +115,29 @@
       "expectations": [
         "Plans isolated synthetic stress cases with observable failure criteria, original unchanged."
       ]
+    },
+    {
+      "id": 11,
+      "name": "content-led-direction",
+      "prompt": "새 재고 모니터링 대시보드의 방향을 제안해 주세요. 기존 제품은 보라색 브랜드와 조밀한 표를 씁니다. 운영자가 80개 품목을 비교해야 합니다. 이번에는 방향만 설명하고 구현이나 문서를 만들지 마세요. 실제 재고 데이터는 제공하지 않았습니다.",
+      "expected_output": "Chooses a task-led direction retaining useful density and brand, without fabricated data or mandatory image/document stages.",
+      "files": [],
+      "expectations": [
+        "Retains dense comparison and the existing purple identity unless a concrete task failure justifies a change.",
+        "Does not impose a marketing hero, arbitrary aesthetic bans, fabricated inventory metrics, image generation, or DESIGN.md."
+      ]
+    },
+    {
+      "id": 12,
+      "name": "redesign-preservation",
+      "prompt": "기존 결제 페이지를 시각적으로 리디자인하려고 합니다. 회사 로고, /checkout URL, 가격, 약관 동의, 구매 이벤트 분석은 그대로여야 합니다. 이번에는 변경 범위와 검증 계획만 말해 주세요. 더 멋져 보이도록 고객 수나 추천 문구를 만들어 넣지는 마세요.",
+      "expected_output": "Bounds visual redesign without changing identity, destinations, factual content, consent, or behavior; plans checks of the preserved purchase flow.",
+      "files": [],
+      "expectations": [
+        "Separates authorized visual changes from preserved logo, URL, prices, consent, and analytics behavior.",
+        "Plans verification of the purchase interaction and responsive states, not just a before/after screenshot.",
+        "Does not fabricate social proof or perform implementation."
+      ]
     }
   ]
 }

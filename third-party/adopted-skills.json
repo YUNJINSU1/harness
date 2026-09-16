@@ -70,10 +70,14 @@
     },
     "awesome-interface": {
       "adopted_on": "2026-09-09",
-      "source": "jakubkrehel/skills + jakubkrehel/make-interfaces-feel-better",
+      "source": "jakubkrehel/skills + jakubkrehel/make-interfaces-feel-better + Leonxlnx/taste-skill",
       "ownership": "harness-owned; excluded from skills CLI updates",
       "license": "MIT",
       "previous_registration": null,
+      "license_paths": [
+        "skills/awesome-interface/LICENSE",
+        "skills/awesome-interface/LICENSE.taste-skill"
+      ],
       "snapshot_hash_recipe": "SHA-256 over selected source files sorted by relative POSIX path: UTF-8 path + NUL + file bytes + NUL. Directory paths expand recursively. Hashes describe upstream inputs, not the adapted output.",
       "upstreams": [
         {
@@ -107,13 +111,26 @@
           "snapshot_sha256": "f692cfbc668768a1cc8eeb3263f3dd6bf445abbc12c93b20aede563e28ace3bf",
           "license": "MIT",
           "license_path": "LICENSE"
+        },
+        {
+          "source": "https://github.com/Leonxlnx/taste-skill",
+          "commit": "ccbc15639c97057cbfcf32ecebc38ef716e4bb37",
+          "paths": [
+            "LICENSE",
+            "skills/taste-skill/SKILL.md",
+            "skills/redesign-skill/SKILL.md"
+          ],
+          "snapshot_sha256": "149899fa31cc721a67163cd509d0145bd7e39404ddd87cdd352fc52ec2005f12",
+          "license": "MIT",
+          "license_path": "LICENSE"
         }
       ],
       "local_changes": [
         "Consolidate discovery into awesome-interface with conditional plain-file domain and workflow references.",
         "Preserve review-only and explicit task intent boundaries; remove dependencies on independently installed upstream skills.",
         "Use project conventions and existing color notation; separate accessibility requirements from aesthetic starting points.",
-        "Deduplicate shared UI rules and retain generation, improvement, review, stress, variant and explanation workflows."
+        "Deduplicate shared UI rules and retain generation, improvement, review, stress, variant and explanation workflows.",
+        "Selectively adapt taste-skill and redesign-skill into conditional art-direction and preservation-first redesign references; omit theme/output entry points and arbitrary aesthetic bans."
       ],
       "excluded_sources": [
         {
@@ -121,6 +138,104 @@
           "commit": "daa2ec87cc80bc7e7e812f84c5b34d5990240fcb",
           "reason": "No license identified in the cloned tree; no text or examples adopted. OKLCH guidance derives from the MIT better-colors source above."
         }
+      ]
+    },
+    "image-to-code": {
+      "adopted_on": "2026-09-15",
+      "source": "https://github.com/Leonxlnx/taste-skill",
+      "ownership": "harness-owned; excluded from skills CLI updates",
+      "license": "MIT",
+      "license_path": "skills/image-to-code/LICENSE",
+      "previous_registration": null,
+      "snapshot_hash_recipe": "SHA-256 over selected source files sorted by relative POSIX path: UTF-8 path + NUL + file bytes + NUL. Directory paths expand recursively. Hashes describe upstream inputs, not the adapted output.",
+      "upstreams": [
+        {
+          "source": "https://github.com/Leonxlnx/taste-skill",
+          "commit": "ccbc15639c97057cbfcf32ecebc38ef716e4bb37",
+          "paths": [
+            "LICENSE",
+            "skills/image-to-code-skill/SKILL.md"
+          ],
+          "snapshot_sha256": "20db17e67baa78b6df24b0fb460087f16869dc89c9fc36af08126742fb08c982",
+          "license": "MIT",
+          "license_path": "LICENSE"
+        }
+      ],
+      "local_changes": [
+        "Reuse selected or supplied images before conditional imagegen; preserve approved references and repository-backed product behavior.",
+        "Implement real web UI in the existing stack; keep native-app implementation out of scope and share focused awesome-interface domain rules.",
+        "Separate visible, repository-backed and inferred facts; transition from image-only generation to code and actual runtime verification."
+      ]
+    },
+    "imagegen": {
+      "adopted_on": "2026-09-15",
+      "source": "https://github.com/Leonxlnx/taste-skill",
+      "ownership": "harness-owned; excluded from skills CLI updates",
+      "license": "MIT",
+      "license_path": "skills/imagegen/LICENSE",
+      "previous_registration": null,
+      "snapshot_hash_recipe": "SHA-256 over selected source files sorted by relative POSIX path: UTF-8 path + NUL + file bytes + NUL. Directory paths expand recursively. Hashes describe upstream inputs, not the adapted output.",
+      "upstreams": [
+        {
+          "source": "https://github.com/Leonxlnx/taste-skill",
+          "commit": "ccbc15639c97057cbfcf32ecebc38ef716e4bb37",
+          "paths": [
+            "LICENSE",
+            "skills/imagegen-frontend-web/SKILL.md",
+            "skills/imagegen-frontend-mobile/SKILL.md",
+            "skills/brandkit/SKILL.md"
+          ],
+          "snapshot_sha256": "6584a6759111a886077423e863d24bc9498ea92455adffe1843ac8397c6f68f2",
+          "license": "MIT",
+          "license_path": "LICENSE"
+        },
+        {
+          "source": "https://github.com/s1dashu/ip-as-logo-skill",
+          "commit": "acb834c717bcd0a487c49732d08397ba280d690b",
+          "paths": [
+            "LICENSE",
+            "SKILL.md"
+          ],
+          "snapshot_sha256": "923a03e233e616491b741e827a6a5c464caa13b2fe4d7b2f61146e92339218bf",
+          "license": "MIT",
+          "license_path": "LICENSE",
+          "retained_license_path": "skills/imagegen/LICENSE.ip-as-logo"
+        }
+      ],
+      "local_changes": [
+        "Consolidate web, mobile, logo and brandkit entry points into one imagegen skill with plain-file branch references; rounded-ip is an opt-in logo preset, not a registered skill.",
+        "Use the actual documented generator and inspected artifacts; preserve owned assets and separate primary images from optional details.",
+        "Keep platform, responsive viewport and concept-versus-production boundaries explicit; remove mandatory section counts, style bans and fictional claims.",
+        "Add wordmark, symbol, mascot, combination-mark and emblem decisions with type-specific inspection; distinguish standalone logo development from brand application boards.",
+        "Retain the upstream rounded mascot silhouette, dominant lower-corner primary, chromatic background, subtle depth and character-image prompt treatment; replace fixed batches, repeated approval, model allowlists and uninspected delivery with the shared workflow."
+      ]
+    },
+    "design-md": {
+      "adopted_on": "2026-09-15",
+      "source": "https://github.com/Leonxlnx/taste-skill",
+      "ownership": "harness-owned; excluded from skills CLI updates",
+      "license": "MIT",
+      "license_path": "skills/design-md/LICENSE",
+      "previous_registration": null,
+      "snapshot_hash_recipe": "SHA-256 over selected source files sorted by relative POSIX path: UTF-8 path + NUL + file bytes + NUL. Directory paths expand recursively. Hashes describe upstream inputs, not the adapted output.",
+      "upstreams": [
+        {
+          "source": "https://github.com/Leonxlnx/taste-skill",
+          "commit": "ccbc15639c97057cbfcf32ecebc38ef716e4bb37",
+          "paths": [
+            "LICENSE",
+            "skills/stitch-skill/SKILL.md",
+            "skills/stitch-skill/DESIGN.md"
+          ],
+          "snapshot_sha256": "9fabd790a6ae410ebad8811e9b8027941cec3d33b513100c113fb587bde1f846",
+          "license": "MIT",
+          "license_path": "LICENSE"
+        }
+      ],
+      "local_changes": [
+        "Generalize Stitch design-system authoring into optional repository-owned documentation with one source of truth.",
+        "Separate Current, Approved, Proposed and Unknown evidence; link runtime owners instead of creating replacement tokens.",
+        "Keep Stitch as a conditional text adapter, not a prerequisite or implicit external action; remove preset aesthetic bans and unsourced values."
       ]
     },
     "diagram-design": {

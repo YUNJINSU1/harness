@@ -1,0 +1,118 @@
+{
+  "skill_name": "imagegen",
+  "evals": [
+    {
+      "id": 1,
+      "name": "web-primary-vs-detail-count",
+      "prompt": "Plan the image-generation workflow only. The described assets are hypothetical; no input files or generation tools are provided in this exercise. State the required inputs, image-set contract, preservation checks, and completion boundary without claiming any artifact exists:\n\nCreate design-reference images for exactly three horizontal sections of a synthetic field-notes product site: hero, collection browser, and final signup. Make each section readable for implementation. Add a close detail only if one component genuinely needs it, and make clear what counts toward the section total.",
+      "expected_output": "Plans, rather than claims to execute: Uses the documented available image generator and returns three separately inspectable horizontal primary images, one per named section. Any useful close-up is separately labeled as a detail and excluded from the primary count. The sequence varies composition while retaining one coherent product system, contains no invented proof, and includes the image-only handoff and actual-output inspection; if generation is unavailable, it reports that instead of fabricating artifacts or code.",
+      "files": [],
+      "expectations": [
+        "In the plan: Declares and delivers exactly three primary horizontal section images; does not collapse sections into a tall page or contact sheet.",
+        "In the plan: Labels optional close-ups as details outside the primary count and never uses one to replace a primary.",
+        "In the plan: Inspects actual outputs and reports paths, viewport, preserved/proposed content, and unknown behavior without implementing code.",
+        "Does not claim images were generated or visually inspected in this planning-only exercise."
+      ]
+    },
+    {
+      "id": 2,
+      "name": "native-mobile-platform-scope",
+      "prompt": "Plan the image-generation workflow only. The described assets are hypothetical; no input files or generation tools are provided in this exercise. State the required inputs, image-set contract, preservation checks, and completion boundary without claiming any artifact exists:\n\nGenerate a four-screen Android-native concept for a synthetic neighborhood tool-share app: browse, item detail, request sheet, and confirmation. Keep it buildable, readable, and consistent. This is a native app, not a responsive website, and this phase must produce images only.",
+      "expected_output": "Plans, rather than claims to execute: Selects Android-native patterns, safe areas, navigation and device framing intentionally; produces a coherent four-screen flow with readable separate outputs and actual inspection. It does not substitute iOS cues, a phone-sized website, source code, or unsupported interaction claims.",
+      "files": [],
+      "expectations": [
+        "In the plan: Produces the four requested Android-native screen roles in a logical sequence with consistent state and design language.",
+        "In the plan: Accounts for Android navigation, safe areas/system insets, readable controls, and coherent device presentation while distinguishing the result from responsive web.",
+        "In the plan: Returns inspected image artifacts and an image-only handoff; unavailable generation is reported rather than faked.",
+        "Does not claim images were generated or visually inspected in this planning-only exercise."
+      ]
+    },
+    {
+      "id": 3,
+      "name": "brand-preservation-concept-delivery",
+      "prompt": "Plan the image-generation workflow only. The described assets are hypothetical; no input files or generation tools are provided in this exercise. State the required inputs, image-set contract, preservation checks, and completion boundary without claiming any artifact exists:\n\nUsing the supplied owned logo, wordmark, forest/cream palette, and type specimen, create one identity concept board for a fictional community seed library. Preserve those assets exactly and propose only image direction and two coherent applications. Deliver a concept board only; do not claim vector masters, font files, tokens, trademark clearance, or print-ready assets.",
+      "expected_output": "Plans, rather than claims to execute: Treats supplied identity assets as authoritative inputs, preserves and visually compares them, and limits proposals to image direction and two coherent applications tied to a core metaphor. The handoff distinguishes preserved from proposed material and explicitly excludes absent vector, font, token, legal, and production deliverables.",
+      "files": [],
+      "expectations": [
+        "In the plan: Uses documented input-image support when available and checks the generated logo/wordmark against the supplied owned source; any preservation limitation prevents an approved claim.",
+        "In the plan: Builds a coherent concept board with brand strategy/core metaphor, functional palette/type/image direction, and the two requested applications.",
+        "In the plan: Returns an inspected concept image and does not represent generated pixels as production-ready vector, font, token, legal, or print assets.",
+        "Does not claim images were generated or visually inspected in this planning-only exercise."
+      ]
+    },
+    {
+      "id": 4,
+      "name": "negative-generic-image-scope",
+      "prompt": "Generate a photorealistic image of a red fox crossing a snowy meadow for a nature article. No interface, app, website, or brand identity board is involved.",
+      "expected_output": "Does not invoke the imagegen UI/brand-board workflow; routes the generic photo request to the environment's general image-generation capability without loading frontend or brandkit branches.",
+      "files": [],
+      "expectations": [
+        "Recognizes that a generic editorial photo is outside this skill's web/mobile UI and brand-board scope.",
+        "Does not apply section, screen-flow, device, or brand-board contracts to the request."
+      ]
+    },
+    {
+      "id": 5,
+      "name": "responsive-web-not-native",
+      "prompt": "Plan one primary reference image for a 390px-wide portrait responsive website signup section. It is not a native app. No image tools are provided; do not generate or claim an artifact. Explain branch, orientation, count and verification boundary.",
+      "expected_output": "Uses the web branch with one portrait primary at the requested phone-width viewport, no native-app conventions or forced horizontal desktop canvas, and no invented generation.",
+      "files": [],
+      "expectations": [
+        "Selects the web branch and respects the requested portrait orientation and one primary image.",
+        "Does not impose native navigation or claim responsive behavior can be proved by static pixels.",
+        "Does not claim generation or inspection occurred."
+      ]
+    },
+    {
+      "id": 6,
+      "name": "standalone-wordmark-not-board-or-mascot",
+      "prompt": "Plan only; no image tool is supplied and no artifact may be claimed. State the image-set contract, planned type-specific inspection, and completion boundary. For the fictional notebook product NORI, make exactly one standalone uppercase wordmark, with geometric sans-serif lettering on a light background. No symbol, mascot, application mockup, or brand board. The brief and one-image count are settled; do not reopen them.",
+      "expected_output": "Plans one lettering-only logo primary, preserving exact NORI text and the settled count. Uses the logo branch rather than a board or rounded-character preset, and checks lettering at the intended width without promising vector outlines or a specific font.",
+      "files": [],
+      "expectations": [
+        "Keeps exactly one standalone wordmark and adds no mascot, symbol, board, or fixed six-image batch.",
+        "Plans exact lettering, spacing and legibility checks at an appropriate application width rather than imposing a 32px square on the wordmark.",
+        "Does not claim generation, font fidelity, vector masters or trademark clearance."
+      ]
+    },
+    {
+      "id": 7,
+      "name": "mascot-combination-without-rounded-preset",
+      "prompt": "Plan only; no image tool is supplied and no artifact may be claimed. State the image-set contract, planned type-specific inspection, and completion boundary. Create exactly two horizontal combination-mark candidates for the fictional archival tool FOLIO. Each pairs a sharply angular geometric owl mascot with the exact wordmark FOLIO. Use black and white. Show the complete owl and wordmark with clear space. This is not a cute rounded character or a corner-cropped avatar.",
+      "expected_output": "Combines mascot identity with a horizontal wordmark arrangement while retaining the requested angular style and two-image count. Does not activate the rounded-IP preset just because the mark is a mascot; keeps standalone framing and type-specific checks.",
+      "files": [],
+      "expectations": [
+        "Treats mascot, combination arrangement and angular style as compatible dimensions rather than exclusive types.",
+        "Retains two black-and-white candidates with complete shapes; does not impose rounded features, a third color, square corner crops, or six outputs.",
+        "Plans spelling, symbol/wordmark scale and spacing, black-and-white fidelity and small-use legibility; does not claim grayscale alone proves single-ink production.",
+        "Makes no generated or inspected artifact claim."
+      ]
+    },
+    {
+      "id": 8,
+      "name": "logo-to-board-owned-symbol-boundary",
+      "prompt": "Plan only; the assets are hypothetical and no generation tool is supplied. Using an owned leaf symbol whose geometry and color must remain unchanged, create one horizontal symbol-plus-wordmark concept for the fictional name NORI, then one identity application board using that same lockup. Only the new lettering and arrangement are open to design. You may use a clearly provisional direction without another approval round. Explain what happens if an image model changes the supplied leaf.",
+      "expected_output": "Plans the logo first and then its reuse in the board as two separately labeled primary outputs. Preserves the owned symbol, proposes only lettering/arrangement and permitted applications, uses documented input-image support, and treats source drift as a defect rather than silently approving an approximation.",
+      "files": [],
+      "expectations": [
+        "Distinguishes the standalone lockup primary from the board primary and establishes the logo direction before board generation.",
+        "Preserves the owned leaf through supported input-image use and actual-source comparison rather than reinventing it per output.",
+        "If the leaf drifts, refines the affected output or reports preservation failure and withholds an approved claim.",
+        "Labels the chosen direction provisional, excludes production assets, and claims no execution in this planning-only exercise."
+      ]
+    },
+    {
+      "id": 9,
+      "name": "rounded-ip-preserves-upstream-visual-contract",
+      "prompt": "Plan only; no image tool is supplied and no artifact may be claimed. Create exactly one primary mouse character image for the fictional notebook NORI in the upstream IP-as-Logo style. Explain the primary framing, character proportions, palette, finish, generator prompt strategy, and visual inspection. The style and one-image count are settled; do not add a brand board or other deliverables.",
+      "expected_output": "Plans one dominant square lower-corner character image as the primary, retaining large-head proportions, solid chromatic background, simple color masses and barely-there neo-skeuomorphic depth. Uses the preset's character-image prompt treatment rather than a generic standalone-logo template.",
+      "files": [],
+      "expectations": [
+        "The one primary fills most of a square and emerges from a lower corner, not a small centered full-body character or an optional avatar requiring a second primary.",
+        "Retains a large soft head, simplified features, two character color families and a solid contrasting chromatic background, with subtle rather than absent or toy-like depth.",
+        "Describes the character image itself to the generator without generic logo/app-icon/transparent-asset scaffolding.",
+        "Plans visual comparison for the selected style and small-size recognition, keeps the one-image count, and claims no generated artifact."
+      ]
+    }
+  ]
+}
