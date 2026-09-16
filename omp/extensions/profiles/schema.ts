@@ -66,7 +66,7 @@ export const ROLE_PURPOSE_MAP: Record<string, string> = {
 	smol: "economical",
 	tiny: "economical",
 	commit: "economical",
-	vision: "best",
+	vision: "multimodal",
 	advisor: "hard-code",
 };
 

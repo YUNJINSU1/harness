@@ -68,7 +68,7 @@ retry.usageAwareFallback|true
 retry.usageReservePct|10
 retry.usageReservePolicy|"auto"
 cycleOrder|["smol","mid","default","slow"]
-providers.imageOrder|["openai-codex"]
+providers.imageOrder|["openai-codex","google-antigravity"]
 providers.cacheRetention|"auto"
 EOF
 
