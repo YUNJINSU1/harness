@@ -9,15 +9,29 @@ Gemini 3은 추론 모델이고, **Claude·GPT와 반대 방향으로** 프롬�
 
 ## 1. thinking 수준을 먼저 정한다
 
-지정하지 않으면 **`high`가 기본값**이다. 즉 아무것도 안 하면 가장 과하게 생각하는 상태로 실행된다.
+기본값과 지원 범위가 모델마다 다르다. 지정하지 않았을 때의 기본값과 각 모델이 허용하는 `thinking_level`을 사전에 명시해 둔다.
+
+| 모델 | 지원 범위 | 기본값 | 비고 |
+| --- | --- | --- | --- |
+| `gemini-3.1-pro` | `low`, `high` | `high` | `medium`, `minimal` 미지원 |
+| `gemini-3-pro` | `low`, `high` | `high` | `medium`, `minimal` 미지원 |
+| `gemini-3.8-flash` | `low`, `medium`, `high` | **`medium`** | **`minimal` 지정 시 API 검증 오류 발생** |
+| `gemini-3.7-flash` | `minimal`, `low`, `medium`, `high` | `high` | `minimal` 지원 |
+| `gemini-3.5-flash` / `3.6-flash` | `minimal`, `low`, `medium`, `high` | `high` | `minimal` 지원 |
+| `gemini-3-flash` | `minimal`, `low`, `medium`, `high` | `high` | `minimal` 지원 |
+| `gemini-3.1-flash-lite` | `minimal`, `low`, `medium`, `high` | `minimal` | 초경량 모델 |
+| `claude-opus-4-5` / `4-6` (antigravity) | `minimal`, `low`, `medium`, `high` | `medium` | antigravity 경유 시 |
+| `claude-sonnet-4-5` / `4-6` (antigravity) | `minimal`, `low`, `medium`, `high` | `medium` | antigravity 경유 시 |
+
+OMP 카탈로그(`omp models google-antigravity`)는 `gemini-3.8-flash`가 `minimal`을 지원한다고 표기하지만 **틀렸다.** 실제로 호출하면 오류도 없이 멈춘다(2026-09 실측: 100초 타임아웃, 출력 0바이트). 카탈로그의 지원 범위를 근거로 삼지 않고 위 표를 따른다.
+
+검색 그라운딩(`providers.webSearchGeminiModel`)에는 thinking을 지정할 수 없다. `web/search/providers/gemini.ts`가 설정값을 그대로 API 모델 ID로 넘기므로 `:high` 같은 접미사를 붙이면 존재하지 않는 모델을 부르게 된다. 모델명만 적고, 그 모델의 기본값으로 돈다고 전제한다.
 
 | 작업 | 수준 | 근거 |
 | --- | --- | --- |
-| 형식이 엄격한 추출·변환·분류, 목록화, 라우팅 | **`low`** | high는 "표가 더 낫겠다"고 스스로 판단해 형식을 바꾼다 |
+| 형식이 엄격한 추출·변환·분류, 목록화, 라우팅 | **`low`** | 높은 수준은 "표가 더 낫겠다"고 스스로 판단해 형식을 바꾼다 |
 | 대량 파일 훑기, 요약 | `low` ~ `medium` | 판단보다 처리량이 목적 |
 | 근본 원인 진단, 아키텍처 검토, 수학·논리 | `high` | 다단계 추론에서만 값을 한다 |
-
-`minimal`은 3.x Flash·Flash-Lite만 지원하고 3.1 Pro는 받지 않는다. 3.1 Pro는 `low`와 `high`만 있다.
 
 **형식 준수와 추론 깊이는 상충한다.** 둘 다 필요하면 작업을 쪼개 깊은 추론은 `high`로 받고, 그 결과를 `low` 호출로 형식화한다. 한 번에 요구하지 않는다.
 
@@ -96,7 +110,8 @@ done
 
 ## 출처
 
-- [Gemini 3 개발자 가이드](https://ai.google.dev/gemini-api/docs/gemini-3) — thinking_level 표와 기본값, temperature 권고, 프롬프트 베스트 프랙티스, 지식 컷오프
+- [Gemini 3 개발자 가이드](https://ai.google.dev/gemini-api/docs/gemini-3) — 3.1 Pro·3 Flash의 thinking_level 표와 기본값, temperature 권고, 프롬프트 베스트 프랙티스, 지식 컷오프
+- [Gemini 3.8 Flash 모델 문서](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-8-flash) — 3.8 Flash는 `low`/`medium`/`high`만 지원하고 기본이 `medium`, `minimal`은 검증 오류
 - [Thinking 문서](https://ai.google.dev/gemini-api/docs/thinking) — thinking_level, thought signature
 - [Gemini 3.1 Pro가 지시를 무시하는 문제 (Google AI 포럼)](https://discuss.ai.google.dev/t/gemini-3-1-pro-ignores-instructions-thoughts-on-the-thought-process/142075) — 추론 누출, 형식 지시 위반
 - [philschmid.de, Gemini 3 프롬프트 실무](https://www.philschmid.de/gemini-3-prompt-practices) — 롱컨텍스트 샌드위치, 출력 장황함 제어
